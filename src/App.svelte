@@ -4,23 +4,26 @@
   import Header from "./Header.svelte";
 </script>
 
-<Header />
-<main>
-  <WordInput />
-  <History />
-</main>
+<div class="app-container">
+  <Header />
+  <main>
+    <WordInput />
+    <History />
+  </main>
+</div>
 
 <style>
-  main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
   }
 
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
+  main {
+    max-width: 600px;
+    margin: 0 auto;
+    align-items: center;
+    height: 100%;
   }
 </style>

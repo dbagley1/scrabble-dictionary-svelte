@@ -6,6 +6,9 @@ export const checkWord = async (word) => {
   let data = await response.json();
   console.log(data);
 
-  let result = { ...data.results[0], id: Date.now() };
-  return result;
+  let results = data.results.map((result, i) => {
+    return { ...result, id: `${Date.now()}${i}`, showDefinition: false };
+  });
+
+  return results;
 };

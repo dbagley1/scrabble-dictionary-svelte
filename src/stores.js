@@ -8,7 +8,14 @@ function createResultsStore() {
     subscribe,
     update,
     add: (result) => update(results => [result, ...results]),
-    delete: (id) => update(results => results.filter(result => result.id != id))
+    addAll: (newResults) => update(results => [...newResults, ...results]),
+    delete: (id) => update(results => results.filter(result => result.id != id)),
+    clear: () => update(() => []),
+    toggleDefinition: (id) => update(results => {
+      let result = results.find(result => result.id == id);
+      result.showDefinition = !result.showDefinition;
+      return results;
+    }),
   };
 }
 

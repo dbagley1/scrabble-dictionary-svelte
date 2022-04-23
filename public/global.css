@@ -65,3 +65,31 @@ button:not(:disabled):active {
 button:focus {
 	border-color: #666;
 }
+
+:root {
+	--scrollbar-foreground: #ddd;
+	--scrollbar-background: transparent;
+}
+
+:is(ul, ol, div) {
+	/* Foreground, Background */
+	scrollbar-color: var(--scrollbar-foreground) var(--scrollbar-background);
+}
+
+:is(ul, ol, div)::-webkit-scrollbar {
+	width: 3px;
+	/* Mostly for vertical scrollbars */
+	height: 3px;
+	/* Mostly for horizontal scrollbars */
+}
+
+:is(ul, ol, div)::-webkit-scrollbar-thumb {
+	/* Foreground */
+	background: var(--scrollbar-foreground);
+	border-radius: 5px;
+}
+
+:is(ul, ol, div)::-webkit-scrollbar-track {
+	/* Background */
+	background: var(--scrollbar-background);
+}
