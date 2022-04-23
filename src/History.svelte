@@ -14,7 +14,7 @@
     on:click={() => {
       showHistory = !showHistory;
     }}
-    style:margin-left="-0.5rem"
+    style:margin-left="-1rem"
   >
     <i class={`fas ${showHistory ? "fa-angle-down" : "fa-angle-right"}`} style:margin-right="0.5rem" />History
   </span>
@@ -31,13 +31,16 @@
 <style lang="scss">
   .result-list {
     width: 100%;
-    height: 100%;
+    max-height: 75%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     overflow-y: auto;
     overflow-x: hidden;
+    margin-left: -0.65rem;
+    padding-left: 1rem;
+    border-left: solid 1px #ddd;
 
     overflow-wrap: break-word;
     word-wrap: break-word;

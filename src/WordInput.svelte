@@ -21,10 +21,10 @@
     loading = "loaded";
   }
 
-  onMount(async () => {
+  /*   onMount(async () => {
     await handleSubmit("NOTVALID");
     await handleSubmit("VALID");
-  });
+  });*/
 </script>
 
 <form on:submit|preventDefault={() => handleSubmit(wordInput)} autocomplete="off">
