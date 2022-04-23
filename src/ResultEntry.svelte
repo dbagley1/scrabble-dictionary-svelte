@@ -33,7 +33,7 @@
 
   .result {
     text-align: center;
-    font-size: 0.75rem;
+    // font-size: 0.75rem;
     width: 100%;
     padding: 0.25rem 0.5rem;
     margin: 0.25rem 0;
@@ -77,8 +77,8 @@
 
   .definition {
     width: 100%;
-    font-family: "Roboto Condensed";
-    font-weight: 400;
+    font-family: "Roboto";
+    font-weight: 300;
     color: #222;
   }
 </style>

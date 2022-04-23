@@ -4,7 +4,7 @@
   import { optionsStore } from "./stores.js";
 
   export let wordInput = "";
-  $: wordInput = wordInput.replaceAll(/[^a-zA-Z,]/g, "").toUpperCase();
+  $: wordInput = wordInput.replaceAll(/[^a-zA-Z, ]/g, "").toUpperCase();
 
   let previousGuess = "";
 
