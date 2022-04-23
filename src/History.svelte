@@ -2,7 +2,7 @@
   import ResultEntry from "./ResultEntry.svelte";
 
   import { resultsStore } from "./stores.js";
-  import { fly, slide, scale, fade, draw } from "svelte/transition";
+  import { slide } from "svelte/transition";
 
   export let showHistory = true;
 </script>
@@ -16,9 +16,9 @@
     }}
     style:margin-left="-1rem"
   >
-    <i class={`fas ${showHistory ? "fa-angle-down" : "fa-angle-right"}`} style:margin-right="0.5rem" />History
+    <i class={`fas ${showHistory ? "fa-angle-down" : "fa-angle-right"}`} style:margin-right="0.5rem" />History ({$resultsStore.length})
   </span>
-  <span class="button" on:click={() => confirm("Clear results history?") && resultsStore.clear()}>Clear</span>
+  <span class="button" on:click={() => confirm("Clear results history?") && resultsStore.clear()}>Clear All</span>
 </div>
 {#if showHistory}
   <ul class="result-list" transition:slide>
@@ -30,8 +30,6 @@
 
 <style lang="scss">
   .result-list {
-    width: 100%;
-    max-height: 75%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -40,11 +38,11 @@
     overflow-x: hidden;
     margin-left: -0.65rem;
     padding-left: 1rem;
+    padding-right: 0.25rem;
     border-left: solid 1px #ddd;
 
     overflow-wrap: break-word;
     word-wrap: break-word;
-    white-space: nowrap;
 
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
@@ -61,6 +59,7 @@
   .history-buttons {
     display: flex;
     justify-content: space-between;
+    padding-right: 0.25rem;
     width: 100%;
 
     .button {

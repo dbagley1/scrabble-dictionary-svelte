@@ -9,7 +9,7 @@
   <div class="result-header">
     <div class="valid-icon">{result.valid ? "✔" : "✖"}</div>
     <div class="result-word">{result.word}</div>
-    <div class="result-delete" on:click|capture={() => resultsStore.delete(result.id)}>&times;</div>
+    <div class="result-delete" on:click|stopPropagation={() => resultsStore.delete(result.id)}>&times;</div>
   </div>
   {#if result.valid && result.showDefinition}
     <div class="definition" transition:slide>{result.definition}</div>
@@ -39,6 +39,7 @@
     margin: 0.25rem 0;
     font-weight: 500;
     border: solid 1px var(--valid-color);
+    word-break: break-word;
     cursor: pointer;
   }
 

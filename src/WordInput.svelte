@@ -1,30 +1,25 @@
 <script>
   import { resultsStore } from "./stores.js";
   import { checkWord } from "./checkWord.js";
-  import LDSSpinner from "./LDSSpinner.svelte";
-  import { onMount } from "svelte";
+  import { optionsStore } from "./stores.js";
 
   export let wordInput = "";
   $: wordInput = wordInput.replaceAll(/[^a-zA-Z,]/g, "").toUpperCase();
+
   let previousGuess = "";
 
-  let currentResult = {};
+  let currentResults = [];
   let loading = "idle";
-  $: valid = currentResult.valid;
+  $: valid = currentResults.every((result) => result.valid);
 
-  async function handleSubmit(word) {
-    previousGuess = word;
+  async function handleSubmit() {
+    previousGuess = wordInput;
     loading = "loading";
-    let results = await checkWord(word);
-    currentResult = results[0];
+    let results = await checkWord(wordInput, $optionsStore);
+    currentResults = results;
     resultsStore.addAll(results);
     loading = "loaded";
   }
-
-  /*   onMount(async () => {
-    await handleSubmit("NOTVALID");
-    await handleSubmit("VALID");
-  });*/
 </script>
 
 <form on:submit|preventDefault={() => handleSubmit(wordInput)} autocomplete="off">
@@ -47,11 +42,10 @@
         {#if valid}
           <span>✔</span>
         {:else}
-          <span>&times;</span>
+          <span>✖</span>
         {/if}
       {:else if loading === "loading"}
         <span>...</span>
-        <!-- <LDSSpinner color="#ddd" /> -->
       {/if}
     </div>
   </div>
@@ -101,5 +95,6 @@
 
   form {
     max-width: 360px;
+    margin: 0 auto;
   }
 </style>
