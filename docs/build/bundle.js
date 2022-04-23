@@ -1681,7 +1681,7 @@ var app = (function () {
     			}
 
     			attr_dev(ul, "class", "result-list svelte-1enlrih");
-    			add_location(ul, file$3, 23, 2, 672);
+    			add_location(ul, file$3, 23, 2, 705);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ul, anchor);
@@ -1955,7 +1955,7 @@ var app = (function () {
     		$$invalidate(0, showHistory = !showHistory);
     	};
 
-    	const click_handler_1 = () => confirm("Clear results history?") && resultsStore.clear();
+    	const click_handler_1 = () => confirm(`Clear all ${$resultsStore.length} results from history?`) && resultsStore.clear();
 
     	$$self.$$set = $$props => {
     		if ('showHistory' in $$props) $$invalidate(0, showHistory = $$props.showHistory);
@@ -2217,13 +2217,10 @@ var app = (function () {
     	let wordinput;
     	let t1;
     	let history;
-    	let t2;
-    	let options;
     	let current;
     	header = new Header({ $$inline: true });
     	wordinput = new WordInput({ $$inline: true });
     	history = new History({ $$inline: true });
-    	options = new Options({ $$inline: true });
 
     	const block = {
     		c: function create() {
@@ -2234,8 +2231,6 @@ var app = (function () {
     			create_component(wordinput.$$.fragment);
     			t1 = space();
     			create_component(history.$$.fragment);
-    			t2 = space();
-    			create_component(options.$$.fragment);
     			attr_dev(main, "class", "svelte-1sa04gd");
     			add_location(main, file, 8, 2, 220);
     			attr_dev(div, "class", "app-container svelte-1sa04gd");
@@ -2252,8 +2247,6 @@ var app = (function () {
     			mount_component(wordinput, main, null);
     			append_dev(main, t1);
     			mount_component(history, main, null);
-    			append_dev(main, t2);
-    			mount_component(options, main, null);
     			current = true;
     		},
     		p: noop,
@@ -2262,14 +2255,12 @@ var app = (function () {
     			transition_in(header.$$.fragment, local);
     			transition_in(wordinput.$$.fragment, local);
     			transition_in(history.$$.fragment, local);
-    			transition_in(options.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
     			transition_out(header.$$.fragment, local);
     			transition_out(wordinput.$$.fragment, local);
     			transition_out(history.$$.fragment, local);
-    			transition_out(options.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
@@ -2277,7 +2268,6 @@ var app = (function () {
     			destroy_component(header);
     			destroy_component(wordinput);
     			destroy_component(history);
-    			destroy_component(options);
     		}
     	};
 

@@ -18,7 +18,7 @@
   >
     <i class={`fas ${showHistory ? "fa-angle-down" : "fa-angle-right"}`} style:margin-right="0.5rem" />History ({$resultsStore.length})
   </span>
-  <span class="button" on:click={() => confirm("Clear results history?") && resultsStore.clear()}>Clear All</span>
+  <span class="button" on:click={() => confirm(`Clear all ${$resultsStore.length} results from history?`) && resultsStore.clear()}>Clear All</span>
 </div>
 {#if showHistory}
   <ul class="result-list" transition:slide>
